@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Need to Talk? - You're not Alone 🤍</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <script src="js/app.js" defer></script>
+</head>
+<body class="gradient-bg">
+  <nav>
+    <h1>You're not Alone 🤍</h1>
+    <div class="nav-links">
+    <a href="/" class="button">Home</a>
+<a href="/healthy" class="button">Healthy Lifestyle</a>
+<a href="/emotional_empathy" class="button">Emotional & Kindness</a>
+<a href="/talk" class="button">Need to Talk?</a>
+<a href="/team" class="button">Team</a>
+
+  </div>
+  </nav>
+
+  <main id="app">
+    <h2>Need to Talk? 💌</h2>
+    <p>If you ever feel sad, lost, or alone, remember: <strong>you don’t need to go through it alone.</strong></p>
+    <p v-if="sent" class="success-message">💙 Message sent successfully! You’re not alone 🤍</p>
+
+    <div class="form-card animated-card">
+      <h3>Send a message anonymously 💬</h3>
+      <form @submit.prevent="sendMessage">
+        <input type="text" v-model="name" placeholder="Your name (or leave blank)">
+        <input type="text" v-model="classInfo" placeholder="Your class (optional)">
+        <textarea v-model="message" placeholder="Write your message here"></textarea>
+        <button type="submit" class="send">Send Message</button>
+      </form>
+    </div>
+
+    <div class="help">
+      <p>
+        🤍 You can also contact <strong>CVV (Centro de Valorização da Vida)</strong> by calling <strong>188</strong> — free and available 24h.  
+        <br><br>
+        👩‍⚕️ Or talk to the <strong>IF psychologists</strong>: Monday to Friday, from <strong>1 p.m. to 3 p.m.</strong> at Block A, Room 201.
+      </p>
+    </div>
+  </main>
+
+  <footer>
+    <p>Created by IF students with 🤍 for English Class</p>
+  </footer>
+</body>
+</html>

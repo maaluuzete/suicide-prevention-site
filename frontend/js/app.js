@@ -4,48 +4,51 @@ new Vue({
     name: "",
     classInfo: "",
     message: "",
-    feedback: "",
+    sent: false,
     sending: false,
+    error: false
   },
   methods: {
     async sendMessage() {
       if (!this.message.trim()) {
-        this.feedback = "Please, write a message before sending.";
+        alert("Please write a message before sending 💬");
         return;
       }
 
       this.sending = true;
-      this.feedback = "Sending message... 💭";
-
-      const data = {
-        name: this.name || "Anonymous",
-        class: this.classInfo || "Anonymous",
-        message: this.message,
-      };
+      this.sent = false;
+      this.error = false;
 
       try {
-        const response = await fetch("http://127.0.0.1:5000/send_message", {
+        const response = await fetch("/save", {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            name: this.name || "Anonymous",
+            classInfo: this.classInfo || "Not provided",
+            message: this.message
+          })
         });
 
-        if (response.ok) {
-          this.feedback = "💛 Message sent successfully! Thank you for sharing.";
+        const data = await response.json();
+
+        if (data.success) {
+          this.sent = true;
           this.name = "";
           this.classInfo = "";
           this.message = "";
+          
+          setTimeout(() => (this.sent = false), 3000);
         } else {
-          this.feedback = "⚠️ Something went wrong. Try again later.";
+          this.error = true;
+          console.error("Erro do servidor:", data.error);
         }
-      } catch (error) {
-        console.error(error);
-        this.feedback = "⚠️ Could not connect to the server. Check if Flask is running.";
+      } catch (err) {
+        this.error = true;
+        console.error("Erro ao enviar:", err);
       } finally {
         this.sending = false;
       }
-    },
-  },
+    }
+  }
 });

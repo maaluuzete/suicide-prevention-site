@@ -28,8 +28,8 @@
     <div class="form-card animated-card">
       <h3>Send a message anonymously 💬</h3>
       <form @submit.prevent="sendMessage">
-        <input type="text" v-model="name" placeholder="Your name (or leave blank)">
-        <input type="text" v-model="classInfo" placeholder="Your class (optional)">
+        <input type="text" v-model="name" placeholder="Your name (Write a ''...'' if you don't want say)">
+        <input type="text" v-model="classInfo" placeholder="Your class (Write a ''...'' if you don't want say)">
         <textarea v-model="message" placeholder="Write your message here"></textarea>
         <button type="submit" class="send">Send Message</button>
       </form>
@@ -37,9 +37,9 @@
 
     <div class="help">
       <p>
-        🤍 You can also contact <strong>CVV (Centro de Valorização da Vida)</strong> by calling <strong>188</strong> — free and available 24h.  
+        🤍 You can also contact <strong>CVV (Centro de Valorização da Vida)</strong> by calling <strong>188</strong> free and available 24h.  
         <br><br>
-        👩‍⚕️ Or talk to the <strong>IF psychologists</strong>: Monday to Friday, from <strong>1 p.m. to 3 p.m.</strong> at Block A, Room 201.
+        👩‍⚕️ Or talk to the <strong>IF psychologists</strong>, <strong>at Block E.</strong> 
       </p>
     </div>
   </main>

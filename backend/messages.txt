@@ -1,6 +1,2 @@
 # Messages sent from the website will appear here
 
-Name: Malu
-Class: 1112
-Message: Eu preciso de ajuda
-----------------------------------------

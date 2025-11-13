@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: suicide-prevention-site
+    env: python
+    buildCommand: ""
+    startCommand: "python backend/app.py"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11
+    plan: free
